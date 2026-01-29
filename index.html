@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วัฒนธรรมทั่วโลก | สำรวจ 20 ประเทศ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Playfair+Display:wght{700}&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== 🎨 CSS STYLES ==================== */
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght{300;400;600}&family=Playfair+Display:wght{700}&display=swap');
+
+        :root {
+            --primary-dark-green: #0B5C38; 
+            --button-main: #2ECC71; 
+            --button-shadow: #27AE60; 
+            --accent-warm: #FFB347; 
+            --background-light: #F0F2F5; 
+            --background-card: #FFFFFF; 
+            --content-box-dark: #34495E; 
+            --content-box-light: #4A637A; 
+            --text-dark: #333333; 
+            --text-light: #FFFFFF; 
+            --text-heading-dark: #1F6F4C; 
+            --text-highlight: #E67E22; 
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        /* Body with Honeycomb Pattern */
+        body {
+            font-family: 'Kanit', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark); 
+            background-color: var(--background-light); 
+            --honeycomb-color: rgba(189, 195, 199, 0.15); 
+            --size: 40px; 
+            background-image: linear-gradient(28deg, var(--honeycomb-color) 12%, transparent 12.5%, transparent 87.5%, var(--honeycomb-color) 88%), linear-gradient(88deg, var(--honeycomb-color) 12%, transparent 12.5%, transparent 87.5%, var(--honeycomb-color) 88%), linear-gradient(150deg, var(--honeycomb-color) 25%, transparent 25%, transparent 75%, var(--honeycomb-color) 75%), linear-gradient(330deg, var(--honeycomb-color) 25%, transparent 25%, transparent 75%, var(--honeycomb-color) 75%), linear-gradient(210deg, var(--honeycomb-color) 25%, transparent 25%, transparent 75%, var(--honeycomb-color) 75%), linear-gradient(30deg, var(--honeycomb-color) 25%, transparent 25%, transparent 75%, var(--honeycomb-color) 75%);
+            background-size: calc(var(--size) * 1.732) calc(var(--size) * 3), calc(var(--size) * 1.732) calc(var(--size) * 3), calc(var(--size) * 1.732) calc(var(--size) * 3), calc(var(--size) * 1.732) calc(var(--size) * 3), calc(var(--size) * 1.732) calc(var(--size) * 3), calc(var(--size) * 1.732) calc(var(--size) * 3);
+            background-position: 0 0, 0 var(--size), calc(var(--size) * 0.866) calc(var(--size) * 0.5), calc(var(--size) * 0.866) calc(var(--size) * 1.5), calc(var(--size) * 0.866) calc(var(--size) * 2.5), calc(var(--size) * 0.866) calc(var(--size) * 1.5);
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        .main-header { background-color: var(--primary-dark-green); color: var(--text-light); padding: 30px 0; text-align: center; }
+        .main-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5em; margin-bottom: 5px; }
+        
+        /* Navigation */
+        .main-nav { background-color: var(--content-box-dark); padding: 8px 0; border-top: 2px solid var(--accent-warm); }
+        .main-nav ul { list-style: none; text-align: center; display: flex; flex-wrap: wrap; justify-content: center; } 
+        .main-nav ul li { margin: 5px 6px; } 
+        .main-nav ul li a { 
+            font-size: 0.85em; padding: 5px 8px; color: var(--text-light); text-decoration: none; font-weight: 400; border-radius: 4px; 
+            transition: background-color 0.3s; cursor: pointer; white-space: nowrap;
+        }
+        .main-nav ul li a:hover, .main-nav ul li a.active { background-color: var(--accent-warm); color: var(--text-dark); }
+        
+        /* ==================== SEARCH BAR STYLES ==================== */
+        #search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px 20px; 
+            background-color: var(--background-light); 
+            max-width: 800px;
+            margin: 0px auto; 
+        }
+
+        #searchInput {
+            flex-grow: 1;
+            padding: 12px 18px;
+            font-size: 1em;
+            font-family: 'Kanit', sans-serif;
+            border: 2px solid var(--button-main); 
+            border-right: none;
+            border-radius: 8px 0 0 8px; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        #searchInput:focus {
+            border-color: var(--accent-warm);
+            box-shadow: 0 0 8px rgba(255, 179, 71, 0.5); 
+        }
+
+        #clearSearchBtn {
+            padding: 12px 15px;
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--text-light);
+            background-color: #E74C3C; 
+            border: none;
+            border-radius: 0 8px 8px 0; 
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        #clearSearchBtn:hover {
+            background-color: #C0392B; 
+            transform: scale(1.02);
+        }
+        /* =================================================================== */
+        
+        /* Home Page - Grid */
+        #countries-overview h2 { 
+            text-align: center; font-size: 1.8em; color: var(--text-heading-dark); 
+            margin-bottom: 25px; padding-top: 10px; border-bottom: 2px solid var(--accent-warm);
+        }
+        .grid-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 25px; 
+            padding-bottom: 40px;
+        }
+
+        /* Country Card Style */
+        .country-card {
+            background-color: var(--background-card);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .country-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        .country-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 3px solid var(--button-main);
+        }
+        .country-card h3 {
+            font-size: 1.2em;
+            color: var(--primary-dark-green);
+            margin-bottom: 5px;
+        }
+        .country-card p {
+            font-size: 0.9em;
+            color: var(--content-box-dark);
+            flex-grow: 1; 
+            margin-bottom: 15px;
+            min-height: 40px; 
+        }
+        
+        /* Card Top Border by Region */
+        .country-card[data-region="asean"] { border-top: 6px solid var(--button-main); } 
+        .country-card[data-region="europe"] { border-top: 6px solid #3498DB; } 
+        .country-card[data-region="east-asia"] { border-top: 6px solid #C0392B; } 
+        .country-card[data-region="north-america"] { border-top: 6px solid #E74C3C; } 
+        .country-card[data-region="south-america"] { border-top: 6px solid #FFCC00; }
+        .country-card.hidden { display: none !important; }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-size: 0.9em;
+        }
+        .btn-secondary {
+            background-color: var(--button-main);
+            color: var(--text-light);
+            border: none;
+        }
+        .btn-secondary:hover {
+            background-color: var(--button-shadow);
+            transform: translateY(-2px);
+        }
+        
+        /* Content Section (Page) Styles */
+        .content-area { padding-top: 40px; padding-bottom: 40px; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+
+        .page-header { text-align: center; margin-bottom: 40px; }
+        .page-header h1 { font-size: 2.2em; color: var(--text-heading-dark); }
+        .page-header p { font-size: 1.1em; color: var(--text-dark); border-bottom: 3px solid var(--button-main); padding-bottom: 10px; margin: 5px auto 0; max-width: 600px; }
+
+        .culture-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 35px;
+            background-color: var(--background-card);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .culture-section.alt-background { background-color: #f7f7f7; }
+
+        .culture-text { flex: 1; }
+        .culture-text h2 { font-size: 1.5em; color: var(--text-heading-dark); border-left: 5px solid var(--accent-warm); padding-left: 10px; margin-bottom: 10px; }
+        .culture-text p { font-size: 1em; }
+
+        .culture-image { flex: 0 0 40%; max-width: 400px; text-align: center; border: 1px solid #ddd; padding: 10px; border-radius: 5px; }
+        .culture-image img { width: 100%; height: auto; border-radius: 4px; }
+        .culture-image .caption { font-size: 0.8em; color: #666; margin-top: 5px; }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .grid-container { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+            .main-nav ul li a { font-size: 0.75em; padding: 5px; margin: 3px; }
+            .culture-section { flex-direction: column; text-align: center; }
+            .culture-image { flex: 1; max-width: 100%; order: -1; } 
+            
+            #searchInput {
+                font-size: 0.9em;
+                padding: 10px 15px;
+            }
+            #clearSearchBtn {
+                font-size: 0.9em;
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <h1>🌏 วัฒนธรรมทั่วโลก</h1>
+            <p>สำรวจเสน่ห์อันน่าหลงใหลของ 20 ประเทศใน 5 ทวีปหลัก</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#" data-page="home" class="active">🏠 หน้าหลัก</a></li>
+                <li><a href="#" data-page="thailand">🇹🇭 ไทย</a></li>
+                <li><a href="#" data-page="laos">🇱🇦 ลาว</a></li>
+                <li><a href="#" data-page="vietnam">🇻🇳 เวียดนาม</a></li>
+                <li><a href="#" data-page="malaysia">🇲🇾 มาเลเซีย</a></li>
+                <li><a href="#" data-page="singapore">🇸🇬 สิงคโปร์</a></li>
+                <li><a href="#" data-page="indonesia">🇮🇩 อินโดนีเซีย</a></li>
+                <li><a href="#" data-page="philippines">🇵🇭 ฟิลิปปินส์</a></li>
+                <li><a href="#" data-page="brunei">🇧🇳 บรูไน</a></li>
+                <li><a href="#" data-page="myanmar">🇲🇲 เมียนมา</a></li>
+                <li><a href="#" data-page="france">🇫🇷 ฝรั่งเศส</a></li>
+                <li><a href="#" data-page="germany">🇩🇪 เยอรมนี</a></li>
+                <li><a href="#" data-page="italy">🇮🇹 อิตาลี</a></li>
+                <li><a href="#" data-page="uk">🇬🇧 UK</a></li>
+                <li><a href="#" data-page="spain">🇪🇸 สเปน</a></li>
+                <li><a href="#" data-page="russia">🇷🇺 รัสเซีย</a></li>
+                 <li><a href="#" data-page="japan">🇯🇵 ญี่ปุ่น</a></li>
+                <li><a href="#" data-page="korea">🇰🇷 เกาหลีใต้</a></li>
+                <li><a href="#" data-page="china">🇨🇳 จีน</a></li>
+                <li><a href="#" data-page="usa">🇺🇸 USA</a></li>
+                <li><a href="#" data-page="canada">🇨🇦 แคนาดา</a></li>
+                <li><a href="#" data-page="mexico">🇲🇽 เม็กซิโก</a></li>
+                <li><a href="#" data-page="brazil">🇧🇷 บราซิล</a></li>
+                <li><a href="#" data-page="peru">🇵🇪 เปรู</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container content-area">
+
+        <section id="home" class="content-section active">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h2>ค้นพบมรดกทางวัฒนธรรม</h2>
+                    <p>สำรวจความแตกต่างที่น่าสนใจของวัฒนธรรมจาก 20 ประเทศ ทั่วทวีปเอเชีย ยุโรป อเมริกาเหนือ และอเมริกาใต้</p>
+                    <a href="#" data-page="thailand" class="btn btn-primary">เริ่มต้นการสำรวจ</a>
+                </div>
+            </section>
+            
+            <div id="search-container">
+                <input type="text" id="searchInput" placeholder="🔍 ค้นหาชื่อประเทศ หรือภูมิภาค (เช่น ญี่ปุ่น, ยุโรป, อเมริกาใต้)...">
+                <button id="clearSearchBtn" onclick="document.getElementById('searchInput').value=''; filterCountries('');">❌ ล้างค่า</button>
+            </div>
+
+            <section id="countries-overview" class="countries-grid">
+                <h2>🌍 20 ประเทศที่สามารถสำรวจได้</h2>
+                <div class="grid-container" id="countryGrid">
+                    
+                    <div class="country-card" data-country="thailand" data-region="asean">
+                        <img src="images/flag_thailand.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/1A237E/FFFFFF?text=TH';" alt="ธงชาติไทย">
+                        <h3>🇹🇭 ประเทศไทย</h3><p>ดินแดนแห่งรอยยิ้ม และวัดวาอาราม</p>
+                        <a href="#" data-page="thailand" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="laos" data-region="asean">
+                        <img src="images/flag_laos.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/E4002B/FFFFFF?text=LA';" alt="ธงชาติลาว">
+                        <h3>🇱🇦 ประเทศลาว</h3><p>เสน่ห์แห่งความเรียบง่าย และสายน้ำโขง</p>
+                        <a href="#" data-page="laos" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="vietnam" data-region="asean">
+                        <img src="images/flag_vietnam.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/FFCC00/E74C3C?text=VN';" alt="ธงชาติเวียดนาม">
+                        <h3>🇻🇳 ประเทศเวียดนาม</h3><p>เฝอ วัฒนธรรมหมวกงอบ และอ่าวฮาลองเบย์</p>
+                        <a href="#" data-page="vietnam" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="malaysia" data-region="asean">
+                        <img src="images/flag_malaysia.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/003366/FFFFFF?text=MY';" alt="ธงชาติมาเลเซีย">
+                        <h3>🇲🇾 ประเทศมาเลเซีย</h3><p>ความหลากหลายทางเชื้อชาติ และหอคอยคู่</p>
+                        <a href="#" data-page="malaysia" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="singapore" data-region="asean">
+                        <img src="images/flag_singapore.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/E74C3C/FFFFFF?text=SG';" alt="ธงชาติสิงคโปร์">
+                        <h3>🇸🇬 สิงคโปร์</h3><p>มหานครแห่งนวัตกรรม ศูนย์กลางทางการเงิน</p>
+                        <a href="#" data-page="singapore" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="indonesia" data-region="asean">
+                        <img src="images/flag_indonesia.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/E74C3C/FFFFFF?text=ID';" alt="ธงชาติอินโดนีเซีย">
+                        <h3>🇮🇩 อินโดนีเซีย</h3><p>หมู่เกาะนับพัน บาหลี และโบรโม</p>
+                        <a href="#" data-page="indonesia" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="philippines" data-region="asean">
+                        <img src="images/flag_philippines.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/003399/FFFFFF?text=PH';" alt="ธงชาติฟิลิปปินส์">
+                        <h3>🇵🇭 ฟิลิปปินส์</h3><p>การร้องเพลงคาราโอเกะ และความเป็นกันเอง</p>
+                        <a href="#" data-page="philippines" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="brunei" data-region="asean">
+                        <img src="images/flag_brunei.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/FFCC00/FFFFFF?text=BN';" alt="ธงชาติบรูไน">
+                        <h3>🇧🇳 บรูไน</h3><p>ความมั่งคั่งจากน้ำมัน และสุเหร่าทองคำ</p>
+                        <a href="#" data-page="brunei" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="myanmar" data-region="asean">
+                        <img src="images/flag_myanmar.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/FFCC00/E74C3C?text=MM';" alt="ธงชาติเมียนมา">
+                        <h3>🇲🇲 เมียนมา</h3><p>เจดีย์ชเวดากอง และการนับถือศาสนา</p>
+                        <a href="#" data-page="myanmar" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    
+                    <div class="country-card" data-country="france" data-region="europe">
+                        <img src="images/flag_france.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/0055A4/FFFFFF?text=FR';" alt="ธงชาติฝรั่งเศส">
+                        <h3>🇫🇷 ฝรั่งเศส</h3><p>หอไอเฟล ศิลปะ และอาหารชั้นเลิศ</p>
+                        <a href="#" data-page="france" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="germany" data-region="europe">
+                        <img src="images/flag_germany.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/000000/FFCC00?text=DE';" alt="ธงชาติเยอรมนี">
+                        <h3>🇩🇪 เยอรมนี</h3><p>ความเที่ยงตรง เทคโนโลยี และเทศกาลเบียร์</p>
+                        <a href="#" data-page="germany" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="italy" data-region="europe">
+                        <img src="images/flag_italy.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/008C45/FFFFFF?text=IT';" alt="ธงชาติอิตาลี">
+                        <h3>🇮🇹 อิตาลี</h3><p>ประวัติศาสตร์โรมัน พิซซ่า และแฟชั่น</p>
+                        <a href="#" data-page="italy" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="uk" data-region="europe">
+                        <img src="images/flag_uk.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/003366/FFFFFF?text=UK';" alt="ธงชาติ UK">
+                        <h3>🇬🇧 สหราชอาณาจักร</h3><p>มรดกราชวงศ์และชาในยามบ่าย</p>
+                        <a href="#" data-page="uk" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="spain" data-region="europe">
+                        <img src="images/flag_spain.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/FFCC00/B83227?text=ES';" alt="ธงชาติสเปน">
+                        <h3>🇪🇸 สเปน</h3><p>ดนตรีฟลาเมนโก้ เทศกาล และทาปาส</p>
+                        <a href="#" data-page="spain" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="russia" data-region="europe">
+                        <img src="images/flag_russia.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/CC0033/FFFFFF?text=RU';" alt="ธงชาติรัสเซีย">
+                        <h3>🇷🇺 รัสเซีย</h3><p>บัลเลต์ สถาปัตยกรรม และประวัติศาสตร์</p>
+                        <a href="#" data-page="russia" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+
+                    <div class="country-card" data-country="japan" data-region="east-asia">
+                        <img src="images/flag_japan.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/FFFFFF/C0392B?text=JP';" alt="ธงชาติญี่ปุ่น">
+                        <h3>🇯🇵 ญี่ปุ่น</h3><p>เทคโนโลยี วินัย และศิลปะซามูไร</p>
+                        <a href="#" data-page="japan" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="korea" data-region="east-asia">
+                        <img src="images/flag_korea.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/3498DB/FFFFFF?text=KR';" alt="ธงชาติเกาหลีใต้">
+                        <h3>🇰🇷 เกาหลีใต้</h3><p>เคป๊อป อาหารกิมจิ และเทรนด์โลก</p>
+                        <a href="#" data-page="korea" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="china" data-region="east-asia">
+                        <img src="images/flag_china.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/E74C3C/FFFFFF?text=CN';" alt="ธงชาติจีน">
+                        <h3>🇨🇳 จีน</h3><p>กำแพงเมืองจีน มังกร และอารยธรรมโบราณ</p>
+                        <a href="#" data-page="china" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    
+                    <div class="country-card" data-country="usa" data-region="north-america">
+                        <img src="images/flag_usa.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/E74C3C/FFFFFF?text=US';" alt="ธงชาติสหรัฐฯ">
+                        <h3>🇺🇸 สหรัฐอเมริกา</h3><p>วัฒนธรรมสมัยนิยม และสัญลักษณ์เสรีภาพ</p>
+                        <a href="#" data-page="usa" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="canada" data-region="north-america">
+                        <img src="images/flag_canada.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/C0392B/FFFFFF?text=CA';" alt="ธงชาติแคนาดา">
+                        <h3>🇨🇦 แคนาดา</h3><p>ความเป็นมิตร เมเปิลไซรัป และฮอกกี้</p>
+                        <a href="#" data-page="canada" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="mexico" data-region="north-america">
+                        <img src="images/flag_mexico.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/006847/FFFFFF?text=MX';" alt="ธงชาติเม็กซิโก">
+                        <h3>🇲🇽 เม็กซิโก</h3><p>อารยธรรมมายา-แอซเท็ก และทาโก้</p>
+                        <a href="#" data-page="mexico" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    
+                    <div class="country-card" data-country="brazil" data-region="south-america">
+                        <img src="images/flag_brazil.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/008000/FFFFFF?text=BR';" alt="ธงชาติบราซิล">
+                        <h3>🇧🇷 บราซิล</h3><p>แซมบ้า คาร์นิวัล และฟุตบอล</p>
+                        <a href="#" data-page="brazil" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+                    <div class="country-card" data-country="peru" data-region="south-america">
+                        <img src="images/flag_peru.png" onerror="this.onerror=null;this.src='https://via.placeholder.com/70/FFCC00/B83227?text=PE';" alt="ธงชาติเปรู">
+                        <h3>🇵🇪 เปรู</h3><p>มาชู ปิกชู และมรดกอารยธรรมอินคา</p>
+                        <a href="#" data-page="peru" class="btn btn-secondary">เรียนรู้เพิ่มเติม</a>
+                    </div>
+
+                </div>
+            </section>
+        </section>
+
+        <section id="thailand" class="content-section country-page">
+            <header class="page-header"><h1>🇹🇭 วัฒนธรรมไทย</h1><p>ดินแดนแห่งรอยยิ้มและประเพณีอันเก่าแก่</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>การไหว้: เอกลักษณ์ของการทักทาย</h2><p><strong>การไหว้</strong> ถือเป็นเอกลักษณ์ของการทักทายและแสดงความเคารพของคนไทย เป็นประเพณีที่ถ่ายทอดและสะท้อนถึงความอ่อนน้อมถ่อมตน</p></div>
+                <div class="culture-image"><img src="images/thai_wai.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/E67E22/FFFFFF?text=Thai+Wai';" alt="การไหว้"><p class="caption">ภาพ: การไหว้ เป็นการแสดงความเคารพและอ่อนน้อม</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/thai_food.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFB347/FFFFFF?text=Thai+Food';" alt="อาหารไทย"><p class="caption">ภาพ: อาหารไทยที่มีรสชาติจัดจ้าน</p></div>
+                <div class="culture-text"><h2>อาหารไทย: รสชาติที่กลมกล่อม</h2><p>อาหารไทยโดดเด่นด้วยรสชาติที่ซับซ้อนและสมดุล ทั้งเผ็ด เปรี้ยว หวาน และเค็ม โดยมีเมนูที่มีชื่อเสียงระดับโลก เช่น ต้มยำกุ้ง และผัดไทย</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                 <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (เปรู)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (ลาว) ➡️</a>
+            </div>
+        </section>
+        
+        <section id="laos" class="content-section country-page">
+            <header class="page-header"><h1>🇱🇦 วัฒนธรรมลาว</h1><p>เสน่ห์แห่งความเรียบง่าย ประเพณีที่งดงาม</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>การตักบาตรข้าวเหนียว: วิถีแห่งศรัทธา</h2><p><strong>การตักบาตรข้าวเหนียว</strong> ในยามเช้าเป็นภาพที่พบเห็นได้ทั่วไปในหลวงพระบาง สะท้อนถึงความศรัทธาในพุทธศาสนาอย่างลึกซึ้ง และความผูกพันระหว่างพระสงฆ์กับชุมชน</p></div>
+                <div class="culture-image"><img src="images/laos_alms.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/3498DB/FFFFFF?text=Laos+Almsgiving';" alt="ตักบาตรลาว"><p class="caption">ภาพ: พิธีตักบาตรยามเช้าในประเทศลาว</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/laos_baci.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFB347/333333?text=Baci+Ceremony';" alt="พิธีบาศรี"><p class="caption">ภาพ: พิธีบาศรี หรือพิธีผูกแขนเรียกขวัญ</p></div>
+                <div class="culture-text"><h2>พิธีบาศรี (Baci) หรือพิธีผูกแขนเรียกขวัญ</h2><p><strong>บาศรี</strong> เป็นพิธีสำคัญของชาวลาวที่ใช้ในการต้อนรับ ขอบคุณ หรือเรียกขวัญกลับคืนสู่ร่างกาย โดยมีการผูกสายสิญจน์สีขาวที่ข้อมือเพื่อเป็นสิริมงคล</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (ไทย)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (เวียดนาม) ➡️</a>
+            </div>
+        </section>
+
+        <section id="vietnam" class="content-section country-page">
+            <header class="page-header"><h1>🇻🇳 วัฒนธรรมเวียดนาม</h1><p>เฝอ หมวกงอบ และความแข็งแกร่งทางประวัติศาสตร์</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>อ่าวฮาลองเบย์: มรดกโลกทางธรรมชาติ</h2><p><strong>อ่าวฮาลองเบย์</strong> ที่มีเสาหินปูนนับพันตั้งตระหง่านกลางทะเลมรกต เป็นสัญลักษณ์ของความงามทางธรรมชาติ และเป็นจุดหมายปลายทางที่สำคัญ</p></div>
+                <div class="culture-image"><img src="images/vietnam_halong.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFCC00/E74C3C?text=Ha+Long+Bay';" alt="อ่าวฮาลองเบย์"><p class="caption">ภาพ: ทิวทัศน์อ่าวฮาลองเบย์</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/vietnam_aodai.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/008000/FFFFFF?text=Ao+Dai';" alt="ชุดอ่าวสายยาว"><p class="caption">ภาพ: ผู้หญิงในชุดอ่าวสายยาวและหมวกงอบ</p></div>
+                <div class="culture-text"><h2>อ่าวสายยาว (Ao Dai) และหมวกงอบ</h2><p><strong>อ่าวสายยาว</strong> เป็นชุดประจำชาติที่สง่างามของสตรีเวียดนาม มักสวมคู่กับ **หมวกงอบ (Nón Lá)** ซึ่งเป็นสัญลักษณ์ทางวัฒนธรรมที่ใช้ในการดำรงชีวิต</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (ลาว)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (มาเลเซีย) ➡️</a>
+            </div>
+        </section>
+
+        <section id="malaysia" class="content-section country-page">
+            <header class="page-header"><h1>🇲🇾 วัฒนธรรมมาเลเซีย</h1><p>ความหลากหลายทางเชื้อชาติ และสถาปัตยกรรมที่โดดเด่น</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>เปโตรนาส ทาวเวอร์: สัญลักษณ์ของชาติ</h2><p><strong>เปโตรนาส ทาวเวอร์ (Petronas Towers)</strong> ในกัวลาลัมเปอร์ คือตึกระฟ้าคู่ที่เคยสูงที่สุดในโลก และเป็นสัญลักษณ์ของความก้าวหน้าทางเศรษฐกิจและเทคโนโลยีของมาเลเซีย</p></div>
+                <div class="culture-image"><img src="images/malaysia_petronas.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/003366/FFFFFF?text=Petronas+Tower';" alt="เปโตรนาส ทาวเวอร์"><p class="caption">ภาพ: หอคอยคู่เปโตรนาส</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/malaysia_diversity.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFCC00/333333?text=Malaysian+Culture';" alt="วัฒนธรรมมาเลเซีย"><p class="caption">ภาพ: การผสมผสานของวัฒนธรรมที่หลากหลาย</p></div>
+                <div class="culture-text"><h2>ความหลากหลายทางเชื้อชาติและศาสนา</h2><p>มาเลเซียเป็นสังคมพหุวัฒนธรรม โดยมีชนชาติหลักคือ มลายู จีน และอินเดีย ซึ่งอยู่ร่วมกันภายใต้ศาสนาและเทศกาลที่แตกต่างกัน เช่น ฮารีรายอ ตรุษจีน และทีกระมิตี</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (เวียดนาม)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (สิงคโปร์) ➡️</a>
+            </div>
+        </section>
+
+        <section id="singapore" class="content-section country-page">
+            <header class="page-header"><h1>🇸🇬 วัฒนธรรมสิงคโปร์</h1><p>มหานครแห่งนวัตกรรม ศูนย์กลางทางการเงินและศิลปะ</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>เมอร์ไลอ้อน: สัญลักษณ์ประจำชาติ</h2><p><strong>เมอร์ไลอ้อน (Merlion)</strong> รูปปั้นสิงโตพ่นน้ำครึ่งตัว-ครึ่งปลา เป็นสัญลักษณ์ทางวัฒนธรรมและการท่องเที่ยวของสิงคโปร์</p></div>
+                <div class="culture-image"><img src="images/singapore_merlion.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/E74C3C/FFFFFF?text=Merlion';" alt="เมอร์ไลอ้อน"><p class="caption">ภาพ: เมอร์ไลอ้อนที่อ่าวมารีน่า</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/singapore_hawker.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/2ECC71/FFFFFF?text=Hawker+Food';" alt="ศูนย์อาหารฮอว์กเกอร์"><p class="caption">ภาพ: ศูนย์อาหาร Hawkers ที่มีอาหารหลากหลาย</p></div>
+                <div class="culture-text"><h2>Hawker Culture: วัฒนธรรมศูนย์อาหาร</h2><p><strong>Hawker Culture</strong> (วัฒนธรรมศูนย์อาหาร) คือแหล่งรวมอาหารท้องถิ่นราคาไม่แพง มีทั้งอาหารมลายู จีน อินเดีย ซึ่งได้รับการขึ้นทะเบียนเป็นมรดกโลกโดย UNESCO</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (มาเลเซีย)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (อินโดนีเซีย) ➡️</a>
+            </div>
+        </section>
+
+        <section id="indonesia" class="content-section country-page">
+            <header class="page-header"><h1>🇮🇩 วัฒนธรรมอินโดนีเซีย</h1><p>หมู่เกาะนับพัน ศาสนา และโบราณสถาน</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>บุโรพุทโธ: มหาสถูปศักดิ์สิทธิ์</h2><p><strong>บุโรพุทโธ (Borobudur)</strong> ในชวา เป็นวัดพุทธที่ใหญ่ที่สุดในโลก สร้างขึ้นในศตวรรษที่ 9 เป็นสัญลักษณ์ทางศาสนาและสถาปัตยกรรมที่สำคัญ</p></div>
+                <div class="culture-image"><img src="images/indonesia_borobudur.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/E74C3C/FFFFFF?text=Borobudur';" alt="บุโรพุทโธ"><p class="caption">ภาพ: มหาสถูปบุโรพุทโธ</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/indonesia_batik.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFB347/333333?text=Batik+Pattern';" alt="ผ้าบาติก"><p class="caption">ภาพ: ผ้าบาติกอินโดนีเซีย</p></div>
+                <div class="culture-text"><h2>ผ้าบาติก (Batik) และวายัง (Wayang)</h2><p><strong>ผ้าบาติก</strong> เป็นผ้าที่มีการย้อมสีด้วยเทคนิคพิเศษที่ได้รับการยกย่องเป็นมรดกโลก ส่วน **วายัง (Wayang)** คือการแสดงหุ่นเงาแบบดั้งเดิมที่ได้รับความนิยมอย่างสูง</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (สิงคโปร์)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (ฟิลิปปินส์) ➡️</a>
+            </div>
+        </section>
+
+        <section id="philippines" class="content-section country-page">
+            <header class="page-header"><h1>🇵🇭 วัฒนธรรมฟิลิปปินส์</h1><p>ความเชื่อคาทอลิก และความรักในดนตรี</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>การร้องคาราโอเกะ: ส่วนหนึ่งของชีวิต</h2><p>ชาวฟิลิปปินส์มีความรักในการร้องเพลงอย่างยิ่ง โดยมี <strong>คาราโอเกะ</strong> เป็นกิจกรรมหลักในการเฉลิมฉลองและงานสังสรรค์ต่างๆ</p></div>
+                <div class="culture-image"><img src="images/philippines_karaoke.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/003399/FFFFFF?text=Karaoke+Philippines';" alt="คาราโอเกะฟิลิปปินส์"><p class="caption">ภาพ: การร้องเพลงคาราโอเกะ</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/philippines_jeepney.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFB347/333333?text=Jeepney';" alt="รถจี๊ปนีย์"><p class="caption">ภาพ: รถโดยสารสาธารณะ Jeepney ที่ตกแต่งอย่างมีสีสัน</p></div>
+                <div class="culture-text"><h2>จี๊ปนีย์ (Jeepney): ศิลปะบนท้องถนน</h2><p><strong>จี๊ปนีย์</strong> คือรถโดยสารสาธารณะที่ถูกดัดแปลงจากรถจี๊ปทหารสหรัฐฯ หลังสงครามโลก เป็นสัญลักษณ์ของวัฒนธรรมฟิลิปปินส์ด้วยการตกแต่งที่สดใสและมีเอกลักษณ์</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (อินโดนีเซีย)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (บรูไน) ➡️</a>
+            </div>
+        </section>
+
+        <section id="brunei" class="content-section country-page">
+            <header class="page-header"><h1>🇧🇳 วัฒนธรรมบรูไน</h1><p>ความมั่งคั่งจากน้ำมัน และศาสนาอิสลาม</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>สุเหร่าทองคำ: สถาปัตยกรรมอันโอ่อ่า</h2><p><strong>มัสยิดโอมาร์ อาลี ไซฟุดดิน</strong> (Omar Ali Saifuddien Mosque) เป็นสัญลักษณ์ของประเทศและเป็นหนึ่งในสุเหร่าที่งดงามที่สุดในเอเชียแปซิฟิก</p></div>
+                <div class="culture-image"><img src="images/brunei_mosque.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFCC00/FFFFFF?text=Brunei+Mosque';" alt="มัสยิดบรูไน"><p class="caption">ภาพ: สุเหร่าทองคำในบรูไน</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/brunei_kampong.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/3498DB/FFFFFF?text=Kampong+Ayer';" alt="กัมปงไอเยอร์"><p class="caption">ภาพ: หมู่บ้านลอยน้ำกัมปงไอเยอร์</p></div>
+                <div class="culture-text"><h2>กัมปงไอเยอร์ (Kampong Ayer): หมู่บ้านลอยน้ำ</h2><p><strong>กัมปงไอเยอร์</strong> คือหมู่บ้านที่สร้างอยู่เหนือน้ำขนาดใหญ่ที่ตั้งมานานกว่า 600 ปี สะท้อนถึงวิถีชีวิตดั้งเดิมของชาวบรูไนที่ใช้ชีวิตอยู่บนผืนน้ำ</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (ฟิลิปปินส์)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (เมียนมา) ➡️</a>
+            </div>
+        </section>
+
+        <section id="myanmar" class="content-section country-page">
+            <header class="page-header"><h1>🇲🇲 วัฒนธรรมเมียนมา</h1><p>ดินแดนแห่งเจดีย์และศรัทธาที่บริสุทธิ์</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>เจดีย์ชเวดากอง: ศูนย์รวมความศรัทธา</h2><p><strong>เจดีย์ชเวดากอง</strong> ในย่างกุ้ง เป็นสถานที่ศักดิ์สิทธิ์ที่สุดของประเทศ เมียนมาได้ชื่อว่าเป็นดินแดนแห่งเจดีย์เนื่องจากมีเจดีย์ทองคำนับพัน</p></div>
+                <div class="culture-image"><img src="images/myanmar_shwedagon.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFCC00/E74C3C?text=Shwedagon+Pagoda';" alt="ชเวดากอง"><p class="caption">ภาพ: เจดีย์ชเวดากองยามค่ำคืน</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/myanmar_thanaka.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/9B59B6/FFFFFF?text=Thanaka';" alt="ทานาคา"><p class="caption">ภาพ: เด็กหญิงที่ทาทานาคาบนใบหน้า</p></div>
+                <div class="culture-text"><h2>ทานาคา (Thanaka) และผ้าโสร่ง (Longyi)</h2><p><strong>ทานาคา</strong> คือเครื่องประทินผิวจากเปลือกไม้ที่ชาวเมียนมานิยมทาเพื่อความสวยงามและป้องกันแดด ส่วน **โสร่ง** คือผ้าผืนยาวที่ทั้งชายและหญิงสวมใส่ในชีวิตประจำวัน</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (บรูไน)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (ฝรั่งเศส) ➡️</a>
+            </div>
+        </section>
+        
+        <section id="france" class="content-section country-page">
+            <header class="page-header"><h1>🇫🇷 วัฒนธรรมฝรั่งเศส</h1><p>หอไอเฟล ศิลปะ และอาหารชั้นเลิศ</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>La Cuisine Française: อาหารฝรั่งเศส</h2><p><strong>อาหารฝรั่งเศส</strong> มีชื่อเสียงระดับโลกในด้านเทคนิคการทำอาหารที่ซับซ้อน รสชาติที่ละเอียดอ่อน และการนำเสนอที่สวยงาม</p></div>
+                <div class="culture-image"><img src="images/france_food.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/0055A4/FFFFFF?text=French+Cuisine';" alt="อาหารฝรั่งเศส"><p class="caption">ภาพ: ขนมอบสไตล์ฝรั่งเศส</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/france_eiffel.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/3498DB/FFFFFF?text=Eiffel+Tower';" alt="หอไอเฟล"><p class="caption">ภาพ: หอไอเฟลในกรุงปารีส</p></div>
+                <div class="culture-text"><h2>หอไอเฟล (Eiffel Tower)</h2><p><strong>หอไอเฟล</strong> เป็นสัญลักษณ์ที่ไม่เพียงแต่ของปารีส แต่เป็นของฝรั่งเศสทั้งหมด สะท้อนถึงความสำเร็จทางวิศวกรรมและสุนทรียภาพในยุคปฏิวัติอุตสาหกรรม</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (เมียนมา)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (เยอรมนี) ➡️</a>
+            </div>
+        </section>
+
+        <section id="germany" class="content-section country-page">
+            <header class="page-header"><h1>🇩🇪 วัฒนธรรมเยอรมนี</h1><p>ความเที่ยงตรง นวัตกรรม และปราสาทเทพนิยาย</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>Oktoberfest: เทศกาลเบียร์อันยิ่งใหญ่</h2><p><strong>Oktoberfest</strong> เป็นเทศกาลพื้นบ้านที่ใหญ่ที่สุดในโลก จัดขึ้นทุกปีที่มิวนิก โดดเด่นด้วยเบียร์ เพลงพื้นเมือง และชุดพื้นเมือง</p></div>
+                <div class="culture-image"><img src="images/germany_oktoberfest.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/000000/FFCC00?text=Oktoberfest';" alt="เทศกาลเบียร์"><p class="caption">ภาพ: บรรยากาศเทศกาล Oktoberfest</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/germany_castles.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/34495E/FFFFFF?text=Neuschwanstein';" alt="ปราสาทเยอรมนี"><p class="caption">ภาพ: ปราสาท Neuschwanstein</p></div>
+                <div class="culture-text"><h2>ปราสาทนอยชวานชไตน์ (Neuschwanstein)</h2><p><strong>ปราสาทนอยชวานชไตน์</strong> ในบาวาเรีย เป็นแรงบันดาลใจในการสร้างปราสาทในเทพนิยายของดิสนีย์ เป็นสัญลักษณ์ของยุคโรแมนติกและสถาปัตยกรรมที่งดงาม</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (ฝรั่งเศส)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (อิตาลี) ➡️</a>
+            </div>
+        </section>
+
+        <section id="italy" class="content-section country-page">
+            <header class="page-header"><h1>🇮🇹 วัฒนธรรมอิตาลี</h1><p>ประวัติศาสตร์โรมัน พิซซ่า และแฟชั่นชั้นสูง</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>Colosseum: มรดกแห่งจักรวรรดิ</h2><p><strong>โคลอสเซียม (Colosseum)</strong> ในกรุงโรม เป็นสนามกีฬาโบราณขนาดใหญ่ เป็นสัญลักษณ์ที่ชัดเจนของอำนาจและสถาปัตยกรรมของจักรวรรดิโรมัน</p></div>
+                <div class="culture-image"><img src="images/italy_colosseum.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/008C45/FFFFFF?text=Colosseum';" alt="โคลอสเซียม"><p class="caption">ภาพ: โคลอสเซียมที่โรม</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/italy_pizza.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFB347/333333?text=Pizza';" alt="พิซซ่า"><p class="caption">ภาพ: พิซซ่าเนเปิลส์</p></div>
+                <div class="culture-text"><h2>อาหารอิตาลี: พิซซ่าและพาสต้า</h2><p><strong>อาหารอิตาลี</strong> เป็นที่รู้จักในเรื่องความเรียบง่ายและวัตถุดิบคุณภาพสูง โดยมีเมนูหลักอย่าง **พิซซ่า** และ **พาสต้า** ที่เป็นที่นิยมไปทั่วโลก</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (เยอรมนี)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (UK) ➡️</a>
+            </div>
+        </section>
+
+        <section id="uk" class="content-section country-page">
+            <header class="page-header"><h1>🇬🇧 วัฒนธรรมสหราชอาณาจักร</h1><p>มรดกราชวงศ์ และชาในยามบ่าย</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>Afternoon Tea: ประเพณีการจิบชา</h2><p><strong>Afternoon Tea</strong> เป็นประเพณีทางสังคมและวัฒนธรรมของอังกฤษ ที่มีการเสิร์ฟชาคู่กับขนมหวานและแซนด์วิชชิ้นเล็กๆ</p></div>
+                <div class="culture-image"><img src="images/uk_tea.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/003366/FFFFFF?text=Afternoon+Tea';" alt="อาฟเตอร์นูนที"><p class="caption">ภาพ: ชุดน้ำชาแบบอังกฤษ</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/uk_palace.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/E74C3C/FFFFFF?text=Buckingham+Palace';" alt="พระราชวังบักกิงแฮม"><p class="caption">ภาพ: พระราชวังบักกิงแฮม</p></div>
+                <div class="culture-text"><h2>ราชวงศ์อังกฤษและประเพณี</h2><p><strong>ราชวงศ์อังกฤษ</strong> มีบทบาทสำคัญในวัฒนธรรมของ UK โดยมีพระราชวังบักกิงแฮม และประเพณีต่างๆ เป็นจุดศูนย์กลางของพิธีการและความสนใจของสาธารณชน</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (อิตาลี)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (สเปน) ➡️</a>
+            </div>
+        </section>
+
+        <section id="spain" class="content-section country-page">
+            <header class="page-header"><h1>🇪🇸 วัฒนธรรมสเปน</h1><p>ดนตรีฟลาเมนโก้ เทศกาล และทาปาส</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>Flamenco: ศิลปะแห่งความเร่าร้อน</h2><p><strong>ฟลาเมนโก้ (Flamenco)</strong> เป็นรูปแบบศิลปะที่ประกอบด้วยการเต้นรำ การร้องเพลง และการเล่นกีตาร์ แสดงถึงความรัก ความเศร้า และความปรารถนา</p></div>
+                <div class="culture-image"><img src="images/spain_flamenco.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFCC00/B83227?text=Flamenco';" alt="ฟลาเมนโก้"><p class="caption">ภาพ: นักเต้นฟลาเมนโก้</p></div>
+            </section>
+             <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/spain_tapas.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/E74C3C/FFFFFF?text=Tapas+Food';" alt="ทาปาส"><p class="caption">ภาพ: ทาปาสหลากหลายชนิด</p></div>
+                <div class="culture-text"><h2>Tapas: ศิลปะการกินจานเล็ก</h2><p><strong>ทาปาส (Tapas)</strong> คืออาหารว่างหรืออาหารจานเล็กๆ ที่เสิร์ฟพร้อมเครื่องดื่มในบาร์ เป็นรูปแบบการเข้าสังคมและการรับประทานอาหารที่เป็นเอกลักษณ์ของสเปน</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (UK)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (รัสเซีย) ➡️</a>
+            </div>
+        </section>
+
+        <section id="russia" class="content-section country-page">
+            <header class="page-header"><h1>🇷🇺 วัฒนธรรมรัสเซีย</h1><p>บัลเลต์ สถาปัตยกรรม และความหนาวเย็น</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>บัลเลต์: ความสง่างามและศิลปะ</h2><p><strong>บัลเลต์รัสเซีย</strong> มีชื่อเสียงระดับโลกในด้านความสง่างาม เทคนิคที่ไร้ที่ติ และโรงละครระดับตำนานอย่าง Bolshoi และ Mariinsky</p></div>
+                <div class="culture-image"><img src="images/russia_ballet.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/CC0033/FFFFFF?text=Russian+Ballet';" alt="บัลเลต์รัสเซีย"><p class="caption">ภาพ: นักเต้นบัลเลต์รัสเซีย</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/russia_church.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/9B59B6/FFFFFF?text=St+Basil';" alt="วิหาร St. Basil"><p class="caption">ภาพ: วิหาร St. Basil's Cathedral</p></div>
+                <div class="culture-text"><h2>วิหารเซนต์บาซิล (St. Basil’s Cathedral)</h2><p><strong>วิหารเซนต์บาซิล</strong> ในกรุงมอสโก โดดเด่นด้วยสถาปัตยกรรมที่สดใสและโดมรูปหัวหอม เป็นสัญลักษณ์ของสถาปัตยกรรมรัสเซียแบบดั้งเดิม</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (สเปน)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (ญี่ปุ่น) ➡️</a>
+            </div>
+        </section>
+
+        <section id="japan" class="content-section country-page">
+            <header class="page-header"><h1>🇯🇵 วัฒนธรรมญี่ปุ่น</h1><p>เทคโนโลยี วินัย และความงามแบบเซน</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>พิธีชงชา (Chanoyu): ความสงบและเคารพ</h2><p><strong>พิธีชงชาญี่ปุ่น</strong> เป็นมากกว่าการดื่มชา แต่เป็นศิลปะที่สะท้อนถึงหลักการของความกลมกลืน (Wa) ความเคารพ (Kei) ความบริสุทธิ์ (Sei) และความสงบ (Jaku)</p></div>
+                <div class="culture-image"><img src="images/japan_tea.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFFFFF/C0392B?text=Japanese+Tea+Ceremony';" alt="พิธีชงชา"><p class="caption">ภาพ: พิธีชงชาญี่ปุ่น</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/japan_sushi.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/3498DB/FFFFFF?text=Sushi';" alt="ซูชิ"><p class="caption">ภาพ: ซูชิ อาหารญี่ปุ่น</p></div>
+                <div class="culture-text"><h2>ซูชิและวัฒนธรรมอาหาร (Washoku)</h2><p><strong>ซูชิ</strong> เป็นตัวแทนของอาหารญี่ปุ่น (Washoku) ที่เน้นความสดใหม่ตามฤดูกาล และการจัดวางที่สวยงาม ถือเป็นมรดกทางวัฒนธรรมอาหารของโลก</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (รัสเซีย)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (เกาหลีใต้) ➡️</a>
+            </div>
+        </section>
+
+        <section id="korea" class="content-section country-page">
+            <header class="page-header"><h1>🇰🇷 วัฒนธรรมเกาหลีใต้</h1><p>เคป๊อป อาหารกิมจิ และเทรนด์โลก</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>K-Pop: ปรากฏการณ์ระดับโลก</h2><p><strong>K-Pop (Korean Pop)</strong> ไม่เพียงแต่เป็นดนตรี แต่ยังเป็นอุตสาหกรรมที่ทรงอิทธิพลที่ขับเคลื่อนเทรนด์แฟชั่น เครื่องสำอาง และอาหารไปทั่วโลก (Hallyu Wave)</p></div>
+                <div class="culture-image"><img src="images/korea_kpop.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/3498DB/FFFFFF?text=K-Pop';" alt="เคป๊อป"><p class="caption">ภาพ: ศิลปิน K-Pop</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/korea_kimchi.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/C0392B/FFFFFF?text=Kimchi';" alt="กิมจิ"><p class="caption">ภาพ: กิมจิ อาหารเกาหลี</p></div>
+                <div class="culture-text"><h2>กิมจิ (Kimchi) และ Hansik</h2><p><strong>กิมจิ</strong> เป็นผักดองรสเผ็ดที่เป็นอาหารหลักของเกาหลี และเป็นสัญลักษณ์ของ **Hansik** (อาหารเกาหลีแบบดั้งเดิม) ซึ่งมีรากฐานมาจากปรัชญาหยินหยางและธาตุทั้งห้า</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (ญี่ปุ่น)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (จีน) ➡️</a>
+            </div>
+        </section>
+
+        <section id="china" class="content-section country-page">
+            <header class="page-header"><h1>🇨🇳 วัฒนธรรมจีน</h1><p>กำแพงเมืองจีน มังกร และอารยธรรมโบราณ</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>กำแพงเมืองจีน: สิ่งมหัศจรรย์</h2><p><strong>กำแพงเมืองจีน</strong> เป็นโครงสร้างที่ยาวที่สุดในโลก สร้างขึ้นเพื่อป้องกันการรุกรานทางตอนเหนือ เป็นสัญลักษณ์ของความยิ่งใหญ่ทางประวัติศาสตร์ของจีน</p></div>
+                <div class="culture-image"><img src="images/china_wall.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/E74C3C/FFFFFF?text=Great+Wall';" alt="กำแพงเมืองจีน"><p class="caption">ภาพ: กำแพงเมืองจีนอันยิ่งใหญ่</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/china_dragon.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFB347/333333?text=Chinese+Dragon';" alt="มังกรจีน"><p class="caption">ภาพ: การเชิดมังกร</p></div>
+                <div class="culture-text"><h2>มังกร: สัญลักษณ์แห่งอำนาจ</h2><p><strong>มังกรจีน</strong> เป็นสัญลักษณ์ที่สำคัญที่สุดในวัฒนธรรมจีน เป็นตัวแทนของพลัง อำนาจ ความโชคดี และความเจริญรุ่งเรือง มักใช้ในงานเทศกาลและศิลปะ</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (เกาหลีใต้)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (USA) ➡️</a>
+            </div>
+        </section>
+        
+        <section id="usa" class="content-section country-page">
+            <header class="page-header"><h1>🇺🇸 วัฒนธรรมสหรัฐอเมริกา</h1><p>วัฒนธรรมสมัยนิยม และสัญลักษณ์เสรีภาพ</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>เสรีภาพ: สัญลักษณ์ของประชาธิปไตย</h2><p><strong>เทพีเสรีภาพ (Statue of Liberty)</strong> ในนิวยอร์ก เป็นสัญลักษณ์ของอิสรภาพ เสรีภาพ และโอกาส เป็นจุดเริ่มต้นของผู้อพยพจำนวนมาก</p></div>
+                <div class="culture-image"><img src="images/usa_liberty.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/E74C3C/FFFFFF?text=Statue+of+Liberty';" alt="เทพีเสรีภาพ"><p class="caption">ภาพ: เทพีเสรีภาพ</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/usa_hollywood.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/34495E/FFFFFF?text=Hollywood';" alt="ฮอลลีวูด"><p class="caption">ภาพ: ป้าย Hollywood</p></div>
+                <div class="culture-text"><h2>Hollywood และวัฒนธรรม Pop</h2><p><strong>Hollywood</strong> เป็นศูนย์กลางของอุตสาหกรรมภาพยนตร์และความบันเทิงของโลก ซึ่งมีอิทธิพลอย่างมากต่อวัฒนธรรมสมัยนิยม (Pop Culture) ทั่วโลก</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (จีน)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (แคนาดา) ➡️</a>
+            </div>
+        </section>
+        
+        <section id="canada" class="content-section country-page">
+            <header class="page-header"><h1>🇨🇦 วัฒนธรรมแคนาดา</h1><p>ความเป็นมิตร เมเปิลไซรัป และฮอกกี้</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>ฮอกกี้: กีฬาแห่งชาติ</h2><p><strong>ฮอกกี้ (Ice Hockey)</strong> เป็นกีฬาที่ได้รับความนิยมมากที่สุดและเป็นส่วนสำคัญของอัตลักษณ์ของชาวแคนาดาอย่างลึกซึ้ง</p></div>
+                <div class="culture-image"><img src="images/canada_hockey.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/C0392B/FFFFFF?text=Ice+Hockey';" alt="ฮอกกี้"><p class="caption">ภาพ: กีฬาฮอกกี้ในแคนาดา</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/canada_maple.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/E74C3C/FFFFFF?text=Maple+Syrup';" alt="เมเปิลไซรัป"><p class="caption">ภาพ: เมเปิลไซรัปและใบเมเปิล</p></div>
+                <div class="culture-text"><h2>เมเปิลไซรัปและวัฒนธรรมที่เป็นมิตร</h2><p><strong>เมเปิลไซรัป</strong> เป็นผลิตภัณฑ์ที่มีชื่อเสียงระดับโลกของแคนาดา และชาวแคนาดายังมีชื่อเสียงด้าน **ความเป็นมิตรและความสุภาพ** (Meejwe)</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (USA)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (เม็กซิโก) ➡️</a>
+            </div>
+        </section>
+        
+        <section id="mexico" class="content-section country-page">
+            <header class="page-header"><h1>🇲🇽 วัฒนธรรมเม็กซิโก</h1><p>มรดกมายา-แอซเท็ก และเทศกาลที่เต็มไปด้วยสีสัน</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>วันแห่งผู้ล่วงลับ (Día de Muertos)</h2><p><strong>Día de Muertos</strong> ไม่ใช่วันที่น่ากลัว แต่เป็นการเฉลิมฉลองและระลึกถึงผู้จากไปอย่างมีสีสันและรื่นเริง เป็นประเพณีที่ได้รับการยกย่องจาก UNESCO</p></div>
+                <div class="culture-image"><img src="images/mexico_muertos.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFB347/FFFFFF?text=Día+de+Muertos';" alt="วันแห่งผู้ล่วงลับ"><p class="caption">ภาพ: การเฉลิมฉลองวันแห่งผู้ล่วงลับ</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/mexico_taco.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/006847/FFFFFF?text=Taco+Food';" alt="ทาโก้"><p class="caption">ภาพ: ทาโก้ อาหารเม็กซิกันยอดนิยม</p></div>
+                <div class="culture-text"><h2>ทาโก้ (Taco): อาหารแห่งชาติ</h2><p><strong>ทาโก้</strong> ซึ่งเป็นตอร์ตียา (แป้งข้าวโพด/แป้งสาลี) ห่อไส้ต่างๆ เป็นสัญลักษณ์ของอาหารเม็กซิกันที่มีรสชาติจัดจ้าน</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (แคนาดา)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (บราซิล) ➡️</a>
+            </div>
+        </section>
+        
+        <section id="brazil" class="content-section country-page">
+            <header class="page-header"><h1>🇧🇷 วัฒนธรรมบราซิล</h1><p>แซมบ้า คาร์นิวัล และความหลากหลายทางชีวภาพ</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>คาร์นิวัล (Carnival): เทศกาลที่ยิ่งใหญ่ที่สุด</h2><p><strong>คาร์นิวัล</strong> ที่เมืองรีโอเดจาเนโร เป็นเทศกาลที่โด่งดังที่สุดในโลก โดดเด่นด้วยขบวนพาเหรดที่ยิ่งใหญ่ การเต้น **แซมบ้า** และเสื้อผ้าที่หรูหรา</p></div>
+                <div class="culture-image"><img src="images/brazil_carnival.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/008000/FFFFFF?text=Rio+Carnival';" alt="คาร์นิวัล"><p class="caption">ภาพ: ขบวนแซมบ้าในงานคาร์นิวัล</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/brazil_football.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/FFCC00/333333?text=Football+Brazil';" alt="ฟุตบอล"><p class="caption">ภาพ: ฟุตบอล: กีฬาที่เป็นเหมือนศาสนาของชาวบราซิล</p></div>
+                <div class="culture-text"><h2>ฟุตบอล: กีฬาแห่งชีวิต</h2><p><strong>ฟุตบอล</strong> (Soccer) เป็นมากกว่ากีฬา แต่เป็นส่วนหนึ่งของอัตลักษณ์และจิตวิญญาณของชาวบราซิล</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (เม็กซิโก)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (เปรู) ➡️</a>
+            </div>
+        </section>
+
+        <section id="peru" class="content-section country-page">
+            <header class="page-header"><h1>🇵🇪 วัฒนธรรมเปรู</h1><p>อารยธรรมอินคา โบราณสถาน และเทือกเขาแอนดีส</p></header>
+            <section class="culture-section">
+                <div class="culture-text"><h2>มาชู ปิกชู (Machu Picchu): เมืองสาบสูญของอินคา</h2><p><strong>มาชู ปิกชู</strong> เป็นโบราณสถานของอารยธรรมอินคาที่ตั้งอยู่บนเทือกเขาสูง เป็นมรดกโลกที่สะท้อนความสามารถทางสถาปัตยกรรมของอารยธรรมโบราณ</p></div>
+                <div class="culture-image"><img src="images/peru_machupicchu.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/8E44AD/FFFFFF?text=Machu+Picchu';" alt="มาชู ปิกชู"><p class="caption">ภาพ: มาชู ปิกชู ที่ซ่อนตัวอยู่บนภูเขา</p></div>
+            </section>
+            <section class="culture-section alt-background">
+                <div class="culture-image"><img src="images/peru_ceviche.jpg" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x250/E74C3C/FFFFFF?text=Peruvian+Ceviche';" alt="เซบิเช่"><p class="caption">ภาพ: เซบิเช่ อาหารประจำชาติเปรู</p></div>
+                <div class="culture-text"><h2>เซบิเช่ (Ceviche): อาหารทะเลรสเปรี้ยว</h2><p><strong>เซบิเช่</strong> ซึ่งเป็นอาหารทะเลดิบที่นำไปหมักกับน้ำมะนาวและเครื่องเทศ เป็นอาหารประจำชาติของเปรูที่มีชื่อเสียงระดับโลก</p></div>
+            </section>
+            <div class="country-nav-buttons">
+                <a href="#" data-nav="prev" class="btn btn-prev">⬅️ ย้อนกลับ (บราซิล)</a>
+                <a href="#" data-nav="home" class="btn btn-nav-home">🏠 หน้าหลัก</a>
+                <a href="#" data-nav="next" class="btn btn-next">ถัดไป (ไทย) ➡️</a>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 เว็บไซต์วัฒนธรรมทั่วโลก. รวม 20 ประเทศ.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.main-nav a[data-page]');
+            const contentSections = document.querySelectorAll('.content-section');
+            const actionLinks = document.querySelectorAll('a[data-page], .country-nav-buttons a[data-nav]'); 
+            
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('keyup', (e) => {
+                    filterCountries(e.target.value);
+                });
+            }
+
+            const showPage = (pageId) => {
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                const activeSection = document.getElementById(pageId);
+                if (activeSection) {
+                    activeSection.classList.add('active');
+                    window.scrollTo(0, 0); 
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+            
+            const filterCountries = (searchText) => {
+                const cards = document.querySelectorAll('.country-card');
+                const filter = searchText.toLowerCase().trim();
+
+                cards.forEach(card => {
+                    const countryName = card.querySelector('h3').textContent.toLowerCase();
+                    const region = card.getAttribute('data-region') ? card.getAttribute('data-region').toLowerCase() : '';
+                    
+                    const isRegionMatch = (filter === 'asean' || filter === 'อาเซียน') && region === 'asean' ||
+                                        (filter === 'europe' || filter === 'ยุโรป') && region === 'europe' ||
+                                        (filter === 'east asia' || filter === 'เอเชียตะวันออก') && region === 'east-asia' ||
+                                        (filter === 'north america' || filter === 'อเมริกาเหนือ') && region === 'north-america' ||
+                                        (filter === 'south america' || filter === 'อเมริกาใต้') && region === 'south-america'; 
+
+                    const isNameMatch = countryName.includes(filter);
+
+                    if (isNameMatch || isRegionMatch || filter === '') {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            };
+
+
+            // ลำดับประเทศที่ไม่มีกัมพูชา (20 ประเทศ)
+            const countryOrder = [
+                'thailand', 'laos', 'vietnam', 'malaysia', 'singapore',
+                'indonesia', 'philippines', 'brunei', 'myanmar',
+                'france', 'germany', 'italy', 'uk', 'spain', 'russia', 
+                'japan', 'korea', 'china', 
+                'usa', 'canada', 'mexico', 
+                'brazil', 'peru' 
+            ];
+
+            const handleCountryNav = (currentId, direction) => {
+                const currentIndex = countryOrder.indexOf(currentId);
+                let newIndex = currentIndex;
+                
+                if (direction === 'next') {
+                    newIndex = (currentIndex + 1) % countryOrder.length; 
+                } else if (direction === 'prev') {
+                    newIndex = (currentIndex - 1 + countryOrder.length) % countryOrder.length; 
+                } else if (direction === 'home') {
+                    showPage('home');
+                    return;
+                }
+                
+                // นำทางไปหน้าใหม่
+                showPage(countryOrder[newIndex]);
+            };
+
+            actionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    const targetPage = link.getAttribute('data-page');
+                    const navAction = link.getAttribute('data-nav');
+                    
+                    if (targetPage) {
+                        showPage(targetPage);
+                    } else if (navAction) {
+                        const currentActiveSection = document.querySelector('.content-section.active');
+                        if (currentActiveSection && currentActiveSection.id !== 'home') {
+                            handleCountryNav(currentActiveSection.id, navAction);
+                        }
+                    }
+                });
+            });
+
+            // ตั้งค่าหน้าแรกตาม Hash หรือ Home
+            const initialHash = window.location.hash.substring(1) || 'home';
+            showPage(initialHash);
+        });
+    </script>
+</body>
+</html>
