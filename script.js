@@ -1,13 +1,4 @@
- </main>
-
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025 เว็บไซต์วัฒนธรรมทั่วโลก. รวม 20 ประเทศ.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('.main-nav a[data-page]');
             const contentSections = document.querySelectorAll('.content-section');
             const actionLinks = document.querySelectorAll('a[data-page], .country-nav-buttons a[data-nav]'); 
@@ -106,8 +97,4 @@
                 });
             });
 
-            // ตั้งค่าหน้าแรกตาม Hash หรือ Home
-            const initialHash = window.location.hash.substring(1) || 'home';
-            showPage(initialHash);
-        });
-    </script>
+        
